@@ -15,6 +15,11 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('places')->nullable();
+            $table->text('activities');
+            $table->text('description');
+            $table->string('days');
             $table->timestamps();
         });
     }

@@ -22,16 +22,17 @@
       </div>
       <div class="w-100"></div>
       <div class="col-md-3">
-        <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+        <p><span>Address:</span>Bagbazar, Kathmandu ,Nepal</p>
       </div>
       <div class="col-md-3">
-        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+        <p><span>Phone:</span> <a href="tel://1234567920">+977-01-2345685
+        </a></p>
       </div>
       <div class="col-md-3">
-        <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+        <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@fordlight.com</a></p>
       </div>
       <div class="col-md-3">
-        <p><span>Website</span> <a href="#">yoursite.com</a></p>
+        <p><span>Website</span> <a href="#">www.fordlight.com</a></p>
       </div>
     </div>
     <div class="row block-9">
@@ -69,7 +70,7 @@
       <div class="row d-flex justify-content-center">
         <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
           <h2>Subcribe to our Newsletter</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+          <p>Thanks for Visiting Us!</p>
           <div class="row d-flex justify-content-center mt-5">
             <div class="col-md-8">
               <form action="#" class="subscribe-form">

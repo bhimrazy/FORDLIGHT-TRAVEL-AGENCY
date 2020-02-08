@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Dashboard | Visit Nepal
+  <title>Dashboard | Ford Light TA
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -28,62 +28,32 @@
     -->
       <div class="logo">
         <a href="/" class="simple-text logo-mini">
-          VN
+          FL
         </a>
         <a href="/" class="simple-text logo-normal">
-          VisitNepal
+         FordLight TA
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="{{route('home')}}">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
-          </li>
+          </li>  
+         <li>
+            <a href="{{route('mypackages')}}">
+              <i class="far fa-calendar-alt"></i>
+              <p>Your Packages</p>
+            </a>
+          </li>  
           <li>
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
+            <a href="#">
+              <i class="fas fa-cogs"></i>
+              <p>Setting</p>
             </a>
-          </li>
-          <li>
-            <a href="./map.html">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li>
+          </li>        
         </ul>
       </div>
     </div>
@@ -99,7 +69,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <a class="navbar-brand" href="#pablo">{{Auth::user()->name}} Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -152,24 +122,24 @@
         </div>
       </nav>
       <!-- End Navbar -->
-    </div> 
-    @yield('content')
+     @include('inc.message')
+      @yield('content')
       <footer class="footer">
         <div class=" container-fluid ">
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+              <a href="/">
+                  FordLight TA
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="/about">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
+                <a href="/blog">
                   Blog
                 </a>
               </li>
@@ -178,7 +148,7 @@
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>,<a href="https://fordlight.com" target="_blank">FordLight TravelAgency</a>. Designed By <a href="https://www.fordlight.com" target="_blank">Team FordLight</a>.
           </div>
         </div>
       </footer>

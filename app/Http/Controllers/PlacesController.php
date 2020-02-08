@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
 class PlacesController extends Controller
-{
+{   public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+       
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +45,7 @@ class PlacesController extends Controller
             'description'=>'required',            
             'image'=>'required|image|max:10024'           
         ]);
-//dd($data);
+
         $imagename=str_slug($request->name);
         $imagePath=request('image')->storeAs('places',$imagename.'-place.png','public');
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(300,200);
@@ -50,7 +55,7 @@ class PlacesController extends Controller
             'description'=>$data['description'],
             'image'=>$imagePath
         ]);
-        return redirect()->route('places.index');
+        return redirect()->route('places.index')->with('success','You successfully added the visiting place');
     }
 
     /**
@@ -99,6 +104,6 @@ class PlacesController extends Controller
         unlink(public_path() . $image_path);
          }          
         $place->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','You successfully deleted the visiting place');
     }
 }

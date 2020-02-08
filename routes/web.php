@@ -38,13 +38,27 @@ Auth::routes();
 
 Route::group(['prefix'=>'dashboard','middleware'=>['auth']],function(){
    
-    Route::get('/', 'HomeController@index')->name('home');
-   
     Route::group(['middleware'=>['admin']],function(){
         Route::get('/admin', function () {
-            return view('admin.dashboard');
+            return view('admin.dashboard')->with('users',\App\User::all());
         })->name('admin');;
 
         Route::resource('places', 'PlacesController');
+        Route::resource('users', 'UsersController');
+        Route::resource('guides', 'GuidesController');
+        Route::resource('stayingplaces', 'StayingplacesController');
+        Route::resource('packages', 'PackagesController');
+        Route::resource('events', 'EventsController');
+
+
+
+    });
+    Route::group(['middleware'=>['notadmin']],function(){
+        
+        Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/mypackages', 'HomeController@packages')->name('mypackages');
+        Route::get('/mypackages/store/{mypackage}', 'HomeController@store')->name('mypackages.store');
+
+
     });
 });

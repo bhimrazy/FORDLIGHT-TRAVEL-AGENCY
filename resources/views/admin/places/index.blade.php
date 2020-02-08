@@ -40,7 +40,7 @@
                 {{$key+1}}
               </td>
               <td>
-               <img src="/storage/{{$place->image}}" alt="{{$place->name}}" width="30%" class="img-responsive">
+               <img src="/storage/{{$place->image}}" alt="{{$place->name}}" width="30%">
               </td>
               <td>
                 {{$place->name}}

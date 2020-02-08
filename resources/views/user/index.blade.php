@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.user')
 @section('content')
 <div class="panel-header panel-header-sm">
 </div>
@@ -7,252 +7,160 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Simple Table</h4>
+          <h4 class="card-title">Trending Places</h4>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  Name
+                  SN
                 </th>
                 <th>
-                  Country
+                 Image
+                </th>               
+                <th>
+                 Title
                 </th>
                 <th>
-                  City
+                  Description
                 </th>
-                <th class="text-right">
-                  Salary
-                </th>
+                <th>
+                  View
+                </th>                
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    Dakota Rice
-                  </td>
-                  <td>
-                    Niger
-                  </td>
-                  <td>
-                    Oud-Turnhout
-                  </td>
-                  <td class="text-right">
-                    $36,738
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Minerva Hooper
-                  </td>
-                  <td>
-                    Curaçao
-                  </td>
-                  <td>
-                    Sinaai-Waas
-                  </td>
-                  <td class="text-right">
-                    $23,789
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Sage Rodriguez
-                  </td>
-                  <td>
-                    Netherlands
-                  </td>
-                  <td>
-                    Baileux
-                  </td>
-                  <td class="text-right">
-                    $56,142
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Philip Chaney
-                  </td>
-                  <td>
-                    Korea, South
-                  </td>
-                  <td>
-                    Overland Park
-                  </td>
-                  <td class="text-right">
-                    $38,735
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Doris Greene
-                  </td>
-                  <td>
-                    Malawi
-                  </td>
-                  <td>
-                    Feldkirchen in Kärnten
-                  </td>
-                  <td class="text-right">
-                    $63,542
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Mason Porter
-                  </td>
-                  <td>
-                    Chile
-                  </td>
-                  <td>
-                    Gloucester
-                  </td>
-                  <td class="text-right">
-                    $78,615
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Jon Porter
-                  </td>
-                  <td>
-                    Portugal
-                  </td>
-                  <td>
-                    Gloucester
-                  </td>
-                  <td class="text-right">
-                    $98,615
-                  </td>
-                </tr>
+             @if ($places->count()>0)
+             @foreach ($places as $key=>$place)
+             <tr>
+              <td>
+                {{$key+1}}
+              </td>
+              <td>
+               <img src="/storage/{{$place->image}}" alt="{{$place->name}}" width="40%">
+              </td>
+              <td>
+                {{$place->name}}
+               </td>
+              <td>
+               {{$place->description}}
+              </td> 
+              <td>
+                <button class="btn btn-info">VIEW</button>
+               </td>              
+            </tr>
+           
+             @endforeach
+                 
+             @endif
               </tbody>
             </table>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-12">
-      <div class="card card-plain">
+      <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Table on Plain Background</h4>
-          <p class="category"> Here is a subtitle for this table</p>
+          <h4 class="card-title">Trending Packages</h4>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  Name
+                  SN
+                </th>                            
+                <th>
+                 Title
                 </th>
                 <th>
-                  Country
+                  Description
                 </th>
                 <th>
-                  City
-                </th>
-                <th class="text-right">
-                  Salary
-                </th>
+                  Activities
+                </th>     
+                <th>
+                  Purchase
+                </th>           
               </thead>
               <tbody>
+             @if ($packages->count()>0)
+             @foreach ($packages as $key=>$package)
+             <tr>
+              <td>
+                {{$key+1}}
+              </td>            
+              <td>
+                <h2>{{$package->name}}</h2>
+               </td>
+              <td>
+               {{$package->description}} <br>
+               {{$package->days}}
+              </td> 
+              <td>
+                {{$package->activities}}
+              </td> 
+              <td>
+                <form action="{{route('mypackages.store',$package->id)}}" method="get">
+                  @csrf
+                <button class="btn btn-xs btn-success" type="submit">Purchase Now</button>
+                </form>
+              </td>              
+            </tr>
+           
+             @endforeach
+                 
+             @endif
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Upcoming Events</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  SN
+                </th>                           
+                <th>
+                 Name
+                </th>
+                <th>
+                  Description
+                 </th>
+                 <th>
+                  Event Date
+                 </th>
+                <th>
+                  Book Now
+                </th>
+               </thead>
+              <tbody>
+                @if ($events->count()>0)
+                @foreach ($events as $key=>$event)
                 <tr>
-                  <td>
-                    Dakota Rice
+                 <td>
+                   {{$key+1}}
+                 </td>                
+                 <td>
+                   {{$event->name}}
                   </td>
-                  <td>
-                    Niger
+                 <td>
+                  {{$event->description}}
+                 </td>
+                 <td>
+                  {{$event['event-date']}}
+                 </td>
+                 <td>                 
+                  <button class="btn btn-xs btn-success" type="submit">Book Now</button>
                   </td>
-                  <td>
-                    Oud-Turnhout
-                  </td>
-                  <td class="text-right">
-                    $36,738
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Minerva Hooper
-                  </td>
-                  <td>
-                    Curaçao
-                  </td>
-                  <td>
-                    Sinaai-Waas
-                  </td>
-                  <td class="text-right">
-                    $23,789
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Sage Rodriguez
-                  </td>
-                  <td>
-                    Netherlands
-                  </td>
-                  <td>
-                    Baileux
-                  </td>
-                  <td class="text-right">
-                    $56,142
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Philip Chaney
-                  </td>
-                  <td>
-                    Korea, South
-                  </td>
-                  <td>
-                    Overland Park
-                  </td>
-                  <td class="text-right">
-                    $38,735
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Doris Greene
-                  </td>
-                  <td>
-                    Malawi
-                  </td>
-                  <td>
-                    Feldkirchen in Kärnten
-                  </td>
-                  <td class="text-right">
-                    $63,542
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Mason Porter
-                  </td>
-                  <td>
-                    Chile
-                  </td>
-                  <td>
-                    Gloucester
-                  </td>
-                  <td class="text-right">
-                    $78,615
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Jon Porter
-                  </td>
-                  <td>
-                    Portugal
-                  </td>
-                  <td>
-                    Gloucester
-                  </td>
-                  <td class="text-right">
-                    $98,615
-                  </td>
-                </tr>
+                </tr>              
+                @endforeach                    
+                @endif
               </tbody>
             </table>
           </div>
